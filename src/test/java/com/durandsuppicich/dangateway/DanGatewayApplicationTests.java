@@ -1,4 +1,4 @@
-package com.example.durandsuppicich.dangateway;
+package com.durandsuppicich.dangateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
