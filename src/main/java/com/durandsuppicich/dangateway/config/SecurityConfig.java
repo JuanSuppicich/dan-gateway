@@ -1,20 +1,24 @@
 package com.durandsuppicich.dangateway.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableResourceServer
-public class SecurityConfig extends ResourceServerConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/oauth/**")
-                .permitAll()
-                .antMatchers("/**")
-                .authenticated();
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/**")
+                    .hasAuthority("admin")
+                .anyRequest().authenticated()
+                .and().oauth2ResourceServer()
+                .jwt();
     }
+
+
+
 }
