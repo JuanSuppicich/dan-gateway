@@ -35,13 +35,6 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- SPRING TEST -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- ZUUL -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
